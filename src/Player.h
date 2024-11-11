@@ -1,40 +1,67 @@
+//
+//  Player.h
+//  Black Cat Sanctuary
+//
+//  Created by Sarita Sulkumäki on 11.11.2024.
+//
+
 #pragma once
 
-#include "Rectangle.h"
+#include "Game.h"
 
-#include <memory>
-
-struct InputData;
-
-class Game;
-class Weapon;
-
-enum eDirection
-{
-    LEFT,
-    RIGHT
-};
-
-class Player : public Rectangle
+class Player
 {
 public:
-    Player(Game* pGame);
-    virtual ~Player() {}
-    
-    bool initialise();
-    void move(InputData inputData, float deltaTime);
-    void attack();
-    void update(float deltaTime);
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    // Player data
+    sf::Sprite  body;
 
-    bool isDead() const { return m_isDead; }
-    void setIsDead(bool isDead) { m_isDead = isDead; }
+    // Constructor and destructor
+    Player();
+    ~Player();
 
-    Weapon* getWeapon() { return m_pWeapon.get(); }
+    // Player functions
+    void    updatePlayer(float direction, float deltatime);
+    void    checkPlayerCollision(int type, int& score, int& game_state);
 
 private:
-    bool    m_isDead = false;
-    eDirection m_direction = LEFT;
-    Game*   m_pGame;
-    std::unique_ptr<Weapon> m_pWeapon;
+
 };
+
+// #include "Rectangle.h"
+
+// #include <memory>
+
+// struct InputData;
+
+// class Game;
+// class Weapon;
+
+// enum eDirection
+// {
+//     LEFT,
+//     RIGHT
+// };
+
+// class Player : public Rectangle
+// {
+// public:
+//     Player(Game* pGame);
+//     virtual ~Player() {}
+    
+//     bool initialise();
+//     void move(InputData inputData, float deltaTime);
+//     void attack();
+//     void update(float deltaTime);
+//     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+//     bool isDead() const { return m_isDead; }
+//     void setIsDead(bool isDead) { m_isDead = isDead; }
+
+//     Weapon* getWeapon() { return m_pWeapon.get(); }
+
+// private:
+//     bool    m_isDead = false;
+//     eDirection m_direction = LEFT;
+//     Game*   m_pGame;
+//     std::unique_ptr<Weapon> m_pWeapon;
+// };

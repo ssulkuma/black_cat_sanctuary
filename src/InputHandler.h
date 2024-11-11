@@ -1,35 +1,44 @@
+//
+//  InputHandler.h
+//  Black Cat Sanctuary
+//
+//  Created by Sarita Sulkumäki on 11.11.2024.
+//
+
 #pragma once
 
-#include <SFML/Window/Keyboard.hpp>
+#include "Game.h"
 
-class Player;
-class Game;
+// #include <SFML/Window/Keyboard.hpp>
 
-struct InputData
-{
-    bool m_movingUp = false;
-    bool m_movingDown = false;
-    bool m_movingLeft = false;
-    bool m_movingRight = false;
-    bool m_space = false;
-    bool m_spaceReleased = true;
+// class Player;
+// class Game;
 
-    bool hasInputs() { return m_movingUp || m_movingDown || m_movingLeft || m_movingRight || m_space;}
-};
+// struct InputData
+// {
+//     bool m_movingUp = false;
+//     bool m_movingDown = false;
+//     bool m_movingLeft = false;
+//     bool m_movingRight = false;
+//     bool m_space = false;
+//     bool m_spaceReleased = true;
 
-class GameInput
-{
-public:
-    GameInput(Game* pGame, Player* pPlayer);
-    ~GameInput();
+//     bool hasInputs() { return m_movingUp || m_movingDown || m_movingLeft || m_movingRight || m_space;}
+// };
+
+// class GameInput
+// {
+// public:
+//     GameInput(Game* pGame, Player* pPlayer);
+//     ~GameInput();
     
-    void update(float deltaTime);
-    void onKeyPressed(sf::Keyboard::Key key);
-    void onKeyReleased(sf::Keyboard::Key key);
+//     void update(float deltaTime);
+//     void onKeyPressed(sf::Keyboard::Key key);
+//     void onKeyReleased(sf::Keyboard::Key key);
     
     
-private:
-    InputData m_inputData;
-    Game* m_pGame;
-    Player* m_pPlayer;
-};
+// private:
+//     InputData m_inputData;
+//     Game* m_pGame;
+//     Player* m_pPlayer;
+// };
