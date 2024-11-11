@@ -106,12 +106,19 @@ public:
 
 private:
     // Background
-    sf::Sprite  background;
-    sf::Sprite  background_extension;
-    sf::Sprite  paw;
+    sf::Sprite      background;
+    sf::Sprite      background_extension;
+    sf::Sprite      paw;
+    sf::Sprite      title;
+    sf::Sprite      start_button;
+    sf::Sprite      quit_button;
 
     // Texts
-    sf::Text    score_display;
+    sf::Text        score_display;
+    sf::Text        game_over;
+    sf::Text        start;
+    sf::Text        quit;
+    sf::FloatRect   text_rect;
 
     void    updateScrollingBackground();
 

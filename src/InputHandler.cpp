@@ -22,11 +22,11 @@ Input::~Input()
 // Handles key press input
 void    Input::handleKeyPress(Game& game)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && game.player.body.getPosition().y > 0 && game.spawn_count < 20)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && game.player.body.getPosition().y > 0)
     {
         game.player.body.move(0.0f, -PLAYER_SPEED * game.deltatime.asSeconds());
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && game.player.body.getPosition().y < (WINDOW_HEIGHT - PLAYER_HEIGHT) && game.spawn_count < 20)
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && game.player.body.getPosition().y < (WINDOW_HEIGHT - PLAYER_HEIGHT))
     {
         game.player.body.move(0.0f, PLAYER_SPEED * game.deltatime.asSeconds());
     }

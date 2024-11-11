@@ -20,6 +20,11 @@ Game::Game()
     score_display.setCharacterSize(30);
     score_display.setFillColor(sf::Color::White);
     score_display.setPosition(80.0f, WINDOW_HEIGHT - 52.0f);
+    game_over.setCharacterSize(150);
+    game_over.setFillColor(sf::Color::White);
+    text_rect = game_over.getGlobalBounds();
+    game_over.setOrigin(0.0f, 0.0f);
+    game_over.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
     spawn_count = 0;
     score = 1;
 }
@@ -74,6 +79,9 @@ void    Game::setTextures()
     background_extension.setTexture(background_tex);
     player.body.setTexture(player_tex);
     paw.setTexture(paw_tex);
+    title.setTexture(title_tex);
+    start_button.setTexture(star_tex);
+    quit_button.setTexture(star_tex);
 }
 
 // Handles events
@@ -120,7 +128,13 @@ void    Game::render()
 // Renders the menu
 void    Game::renderMenu()
 {
+    // Display background
     window.draw(background);
+    // Display title
+    window.draw(title);
+    // Display star buttons
+    window.draw(start_button);
+    window.draw(quit_button);
 }
 
 // Renders the part of gameplay where the player avoids obstacles
@@ -131,8 +145,13 @@ void    Game::renderGameplayFlying()
     for (auto& obstacle : obstacles)
     {
         obstacle.updateObstacle(deltatime.asSeconds(), obstacles);
+        // Define a smaller collision box to the player
+        player.collision_bounds.height = player.body.getGlobalBounds().height - 40.0f;
+        player.collision_bounds.width = player.body.getGlobalBounds().width - 40.0f;
+        player.collision_bounds.left = player.body.getGlobalBounds().left + 20.0f;
+        player.collision_bounds.top = player.body.getGlobalBounds().top + 20.0f;
         // Check obstacle collision with player
-        if (player.body.getGlobalBounds().intersects(obstacle.obstacle_sprite.getGlobalBounds()))
+        if (player.collision_bounds.intersects(obstacle.obstacle_sprite.getGlobalBounds()))
         {
             player.checkPlayerCollision(obstacle, score, game_state);
         }
@@ -169,7 +188,8 @@ void    Game::renderGameplayFlying()
 // Renders the part of the gameplay that holds the puzzle
 void    Game::renderGameplayPuzzle()
 {
-    
+    // Draw background on window
+    window.draw(background);
 }
 
 // Renders paused game
@@ -181,7 +201,10 @@ void    Game::renderPause()
 // Renders game over
 void    Game::renderGameover()
 {
-
+    // Display game over
+    game_over.setFont(font);
+    game_over.setString("Game\nOver");
+    window.draw(game_over);
 }
 
 // Updates background position to create a scrolling effect on a loop

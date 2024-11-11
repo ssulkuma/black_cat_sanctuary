@@ -13,7 +13,8 @@ class Player
 {
 public:
     // Player data
-    sf::Sprite  body;
+    sf::Sprite      body;
+    sf::FloatRect   collision_bounds;
 
     // Constructor and destructor
     Player();
