@@ -21,7 +21,7 @@ public:
 
     // Player functions
     void    updatePlayer(float direction, float deltatime);
-    void    checkPlayerCollision(int type, int& score, int& game_state);
+    void    checkPlayerCollision(Obstacle&   obstacle, int& score, int& game_state);
 
 private:
 

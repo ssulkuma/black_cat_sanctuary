@@ -15,6 +15,7 @@ Game::Game()
     background.setPosition(0.0f, 0.0f);
     background_extension.setPosition(WINDOW_WIDTH, 0.0f);
     spawn_count = 0;
+    score = 1;
 }
 
 // Destructor
@@ -121,7 +122,14 @@ void    Game::renderGameplayFlying()
     updateScrollingBackground();
     // update obstacles
     for (auto& obstacle : obstacles)
+    {
         obstacle.updateObstacle(deltatime.asSeconds(), obstacles);
+        // Check obstacle collision with player
+        if (player.body.getGlobalBounds().intersects(obstacle.obstacle_sprite.getGlobalBounds()))
+        {
+            player.checkPlayerCollision(obstacle, score, game_state);
+        }
+    }
     // Spawn different type of obstacles at random
     obstacle.spawnObstacle(*this);
     // Draw background on window

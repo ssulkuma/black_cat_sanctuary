@@ -21,9 +21,33 @@ Player::~Player()
 }
 
 // Checks player collision with the obstacles
-void    Player::checkPlayerCollision(int type, int& score, int& game_state)
+void    Player::checkPlayerCollision(Obstacle&   obstacle, int& score, int& game_state)
 {
-
+    if (!obstacle.hit)
+    {
+        obstacle.hit = true;
+        switch (obstacle.type) {
+            case WALL:
+            case ENEMY:
+                score--;
+                if (score <= 0)
+                    game_state = GAMESTATE_GAMEOVER;
+                break;
+            case CAT:
+                score++;
+                break;
+            case DOOR:
+                game_state = GAMESTATE_PUZZLE;
+                break;
+            default:
+                break;
+        }
+    }
+    if (obstacle.hit && obstacle.hitCooldown.getElapsedTime().asSeconds() <= 3.0f)
+    {
+        obstacle.hit = false;
+        obstacle.hitCooldown.restart();
+    }
 }
 
 // Updates player position

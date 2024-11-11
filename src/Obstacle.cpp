@@ -28,7 +28,8 @@ void    Obstacle::updateObstacle(float deltatime, std::vector<Obstacle>&   obsta
 {
     obstacle_sprite.move(-movement_speed * deltatime, 0.0f);
     obstacles.erase(std::remove_if(obstacles.begin(), obstacles.end(), [](const Obstacle& obstacle){
-        return obstacle.obstacle_sprite.getPosition().x < 0.0f;
+        return obstacle.obstacle_sprite.getPosition().x < 0.0f ||
+        obstacle.hit;
     }), obstacles.end());
 }
 
