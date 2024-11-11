@@ -64,6 +64,7 @@ public:
     Player                  player;
     Audio                   audio;
     Input                   input;
+    Obstacle                obstacle;
 
     // Vectors
     std::vector<Star>       stars;

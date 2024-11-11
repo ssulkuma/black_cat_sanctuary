@@ -119,6 +119,11 @@ void    Game::renderMenu()
 void    Game::renderGameplayFlying()
 {
     updateScrollingBackground();
+    // update obstacles
+    for (auto& obstacle : obstacles)
+        obstacle.updateObstacle(deltatime.asSeconds(), obstacles);
+    // Spawn different type of obstacles at random
+    obstacle.spawnObstacle(*this);
     // Draw background on window
     window.draw(background);
     window.draw(background_extension);
@@ -127,6 +132,9 @@ void    Game::renderGameplayFlying()
     // Draw star spells
     for (const auto& star : stars)
         window.draw(star.star_projectile);
+    // Draw obstacles
+    for (const auto& obstacle : obstacles)
+        window.draw(obstacle.obstacle_sprite);
 }
 
 // Renders the part of the gameplay that holds the puzzle

@@ -37,7 +37,7 @@ public:
 
     // Obstacle functions
     void    updateObstacle(float deltatime, std::vector<Obstacle>&   obstacles);
-    void    spawnObstacle(std::vector<Obstacle>&   obstacles, int& spawn_count);
+    void    spawnObstacle(Game& game);
 
 
     void    checkStarCollision(int type);
