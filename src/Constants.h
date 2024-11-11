@@ -25,6 +25,12 @@ const float STAR_ROTATION_SPEED = 50.0f;
 const float SPELL_COOLDOWN = 0.5f;
 const float SPAWN_COOLDOWN = 3.0f;
 
+// Rune puzzle
+const int   NUM_RUNES = 5;
+const int   FRAME_COUNT = 4;
+const float ANIMATION_TIME = 0.5f;
+const float FRAME_DURATION = 0.1f;
+
 // const int ScreenWidth = 1600;
 // const int ScreenHeight = 1200;
 

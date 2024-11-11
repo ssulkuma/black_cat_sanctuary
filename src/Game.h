@@ -34,6 +34,7 @@
 #include "Obstacle.h"
 #include "Player.h"
 #include "ResourceManager.h"
+#include "Rune.h"
 #include "Star.h"
 
 enum gameState
@@ -59,16 +60,19 @@ public:
     int                     game_state;
     int                     spawn_count;
     int                     score;
+    float                   base_speed;
 
     // Classes
     Player                  player;
     Audio                   audio;
     Input                   input;
     Obstacle                obstacle;
+    Rune                    rune;
 
     // Vectors
     std::vector<Star>       stars;
     std::vector<Obstacle>   obstacles;
+    std::vector<sf::Sprite> runes;
     
     // Textures
     sf::Texture             background_tex;
@@ -101,7 +105,6 @@ public:
 
     // Game loop functions
     void    handleEvents(sf::Event &event);
-    // void    handleInput();
     void    render();
 
 private:
@@ -116,9 +119,14 @@ private:
     // Texts
     sf::Text        score_display;
     sf::Text        game_over;
+    sf::FloatRect   text_rect;
     sf::Text        start;
     sf::Text        quit;
-    sf::FloatRect   text_rect;
+    sf::Text        one;
+    sf::Text        two;
+    sf::Text        three;
+    sf::Text        four;
+    sf::Text        five;
 
     void    updateScrollingBackground();
 

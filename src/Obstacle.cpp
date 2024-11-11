@@ -48,19 +48,19 @@ void    Obstacle::spawnObstacle(Game& game)
         switch (random_type) {
             case WALL:
                 new_obstacle.obstacle_sprite.setTexture(game.wall_tex);
-                new_obstacle.movement_speed = 100.0f;
+                new_obstacle.movement_speed = game.base_speed;
                 new_obstacle.obstacle_sprite.setScale(0.75f, 0.75f);
                 new_obstacle.type = WALL;
                 break;
             case ENEMY:
                 new_obstacle.obstacle_sprite.setTexture(game.enemy_tex);
-                new_obstacle.movement_speed = 150.0f;
+                new_obstacle.movement_speed = game.base_speed + 50.0f;
                 new_obstacle.obstacle_sprite.setScale(0.3f, 0.3f);
                 new_obstacle.type = ENEMY;
                 break;
             case CAT:
                 new_obstacle.obstacle_sprite.setTexture(game.cat_tex);
-                new_obstacle.movement_speed = 100.0f;
+                new_obstacle.movement_speed = game.base_speed;
                 new_obstacle.obstacle_sprite.setScale(0.15f, 0.15f);
                 new_obstacle.type = CAT;
                 break;

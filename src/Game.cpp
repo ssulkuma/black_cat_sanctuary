@@ -27,6 +27,14 @@ Game::Game()
     game_over.setPosition(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
     spawn_count = 0;
     score = 1;
+    base_speed = 100.0f;
+    runes.resize(NUM_RUNES);
+    for (int i = 0; i < NUM_RUNES + 1; ++i)
+    {
+        runes[i].setPosition(60.0f + i * 200.0f, 100.0f);
+        runes[i].setTextureRect(sf::IntRect(0, 0, 400, 400));
+        runes[i].setScale(0.5f, 0.5f);
+    }
 }
 
 // Destructor
@@ -82,6 +90,11 @@ void    Game::setTextures()
     title.setTexture(title_tex);
     start_button.setTexture(star_tex);
     quit_button.setTexture(star_tex);
+    runes[0].setTexture(rune_1_tex);
+    runes[1].setTexture(rune_2_tex);
+    runes[2].setTexture(rune_3_tex);
+    runes[3].setTexture(rune_4_tex);
+    runes[4].setTexture(rune_5_tex);
 }
 
 // Handles events
@@ -188,8 +201,21 @@ void    Game::renderGameplayFlying()
 // Renders the part of the gameplay that holds the puzzle
 void    Game::renderGameplayPuzzle()
 {
+    //rune.playSequence(runes, window, deltatime.asSeconds());
+    if (rune.rune_sequence.size() == 0)
+        rune.generateRandomSequence();
+    background.setPosition(0.0f, 0.0f);
     // Draw background on window
     window.draw(background);
+    for (auto& rune : runes)
+            window.draw(rune);
+    // If puzzle doesn't work, skip and continue with increased speed
+    rune.player_sequence.clear();
+    rune.rune_sequence.clear();
+    spawn_count = 0;
+    rune.rune_index = 0;
+    base_speed += 20.0f;
+    game_state = GAMESTATE_PLAY;
 }
 
 // Renders paused game
@@ -204,6 +230,9 @@ void    Game::renderGameover()
     // Display game over
     game_over.setFont(font);
     game_over.setString("Game\nOver");
+    text_rect = game_over.getLocalBounds();
+    game_over.setOrigin(text_rect.width / 2.0, text_rect.height / 2.0);
+    game_over.setPosition(WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0);
     window.draw(game_over);
 }
 
