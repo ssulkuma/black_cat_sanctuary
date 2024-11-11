@@ -124,6 +124,9 @@ void    Game::renderGameplayFlying()
     window.draw(background_extension);
     // Draw player on window
     window.draw(player.body);
+    // Draw star spells
+    for (const auto& star : stars)
+        window.draw(star.star_projectile);
 }
 
 // Renders the part of the gameplay that holds the puzzle

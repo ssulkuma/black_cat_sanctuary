@@ -30,20 +30,20 @@ void    Input::handleKeyPress(Game& game)
     {
         game.player.body.move(0.0f, PLAYER_SPEED * game.deltatime.asSeconds());
     }
-    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    // {
-    //     if (spellClock.getElapsedTime().asSeconds() >= SPELL_COOLDOWN)
-    //     {
-    //         Star    star;
-    //         star.initializeStars(game.player.body.getPosition());
-    //         star.star_projectile.setTexture(game.star_tex);
-    //         star.star_projectile.setScale(0.2f, 0.2f);
-    //         game.stars.push_back(star);
-    //         spellClock.restart();
-    //     }
-    // }
-    // for (auto& star : game.stars)
-    //     star.updateStars(game.deltatime.asSeconds(), game.stars);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        if (spellClock.getElapsedTime().asSeconds() >= SPELL_COOLDOWN)
+        {
+            Star    star;
+            star.initializeStars(game.player.body.getPosition());
+            star.star_projectile.setTexture(game.star_tex);
+            star.star_projectile.setScale(0.02f, 0.02f);
+            game.stars.push_back(star);
+            spellClock.restart();
+        }
+    }
+    for (auto& star : game.stars)
+        star.updateStars(game.deltatime.asSeconds(), game.stars);
 }
 
 

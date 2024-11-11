@@ -13,12 +13,13 @@ const int   WINDOW_HEIGHT = 720;
 const float SCROLL_SPEED = 200.0f;
 
 // Player
-const float PLAYER_WIDTH = 50;
-const float PLAYER_HEIGHT = 50;
+const float PLAYER_WIDTH = 150;
+const float PLAYER_HEIGHT = 100;
 const float PLAYER_SPEED = 150.0f;
 
 // Star spell
 const float STAR_SPEED = 100.0f;
+const float STAR_ROTATION_SPEED = 50;
 
 // Cooldowns
 const float SPELL_COOLDOWN = 0.5f;
