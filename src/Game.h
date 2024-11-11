@@ -95,6 +95,7 @@ public:
 
     // Initialize
     bool    initialize();
+    void    setTextures();
 
     // Game loop functions
     void    handleEvents(sf::Event &event);
@@ -102,6 +103,12 @@ public:
     void    render();
 
 private:
+    // Background
+    sf::Sprite  background;
+    sf::Sprite  background_extension;
+
+    void    updateScrollingBackground();
+
     // Event handling functions
     // void    handleMouseClickEvents();
     // void    handleMouseHoverEvents();
@@ -113,6 +120,7 @@ private:
     void    renderGameplayPuzzle();
     void    renderPause();
     void    renderGameover();
+
 };
 
 // class Player;

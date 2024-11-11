@@ -15,11 +15,14 @@ int main(int argc, char* argv[])
 
     Game    game;
 
+    // Initialize game assets
     if (!game.initialize())
     {
         std::cerr << "Error // Game failed to initialise. Window closed." << std::endl;
         return (EXIT_FAILURE);
     }
+    // Set textures on sprites
+    game.setTextures();
 
     // Check that background music starts playing.
    if (!game.audio.playMusic())

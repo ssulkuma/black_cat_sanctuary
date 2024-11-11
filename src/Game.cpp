@@ -12,6 +12,8 @@ Game::Game()
 {
     window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Black Cat Sanctuary", sf::Style::Titlebar | sf::Style::Close);
     game_state = GAMESTATE_PLAY;
+    background.setPosition(0.0f, 0.0f);
+    background_extension.setPosition(WINDOW_WIDTH, 0.0f);
 }
 
 // Destructor
@@ -50,6 +52,13 @@ bool    Game::initialize()
         return (false);
     }
     return (true);
+}
+
+// Set textures to sprites
+void    Game::setTextures()
+{
+    background.setTexture(background_tex);
+    background_extension.setTexture(background_tex);
 }
 
 // Handles events
@@ -96,19 +105,22 @@ void    Game::render()
 // Renders the menu
 void    Game::renderMenu()
 {
-
+    window.draw(background);
 }
 
 // Renders the part of gameplay where the player avoids obstacles
 void    Game::renderGameplayFlying()
 {
-
+    updateScrollingBackground();
+    //Draw background on window
+    window.draw(background);
+    window.draw(background_extension);
 }
 
 // Renders the part of the gameplay that holds the puzzle
 void    Game::renderGameplayPuzzle()
 {
-
+    
 }
 
 // Renders paused game
@@ -121,6 +133,19 @@ void    Game::renderPause()
 void    Game::renderGameover()
 {
 
+}
+
+// Updates background position to create a scrolling effect on a loop
+void    Game::updateScrollingBackground()
+{
+    // Move background with each frame
+    background.move(-SCROLL_SPEED * deltatime.asSeconds(), 0.0f);
+    background_extension.move(-SCROLL_SPEED * deltatime.asSeconds(), 0.0f);
+    // Set background back to right side of screen when going off bounds to create scrolling effect
+    if (background.getPosition().x <= -WINDOW_WIDTH)
+        background.setPosition(static_cast<int>(background_extension.getPosition().x + WINDOW_WIDTH), 0.0f);
+    if (background_extension.getPosition().x <= -WINDOW_WIDTH)
+        background_extension.setPosition(static_cast<int>(background.getPosition().x + WINDOW_WIDTH), 0.0f);
 }
 
 
