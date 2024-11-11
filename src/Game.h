@@ -108,6 +108,10 @@ private:
     // Background
     sf::Sprite  background;
     sf::Sprite  background_extension;
+    sf::Sprite  paw;
+
+    // Texts
+    sf::Text    score_display;
 
     void    updateScrollingBackground();
 

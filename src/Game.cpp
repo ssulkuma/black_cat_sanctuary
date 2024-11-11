@@ -14,6 +14,12 @@ Game::Game()
     game_state = GAMESTATE_PLAY;
     background.setPosition(0.0f, 0.0f);
     background_extension.setPosition(WINDOW_WIDTH, 0.0f);
+    paw.setPosition(30.0f, WINDOW_HEIGHT - 60.0f);
+    paw.setRotation(20.0f);
+    paw.setScale(0.2f, 0.2f);
+    score_display.setCharacterSize(30);
+    score_display.setFillColor(sf::Color::White);
+    score_display.setPosition(80.0f, WINDOW_HEIGHT - 52.0f);
     spawn_count = 0;
     score = 1;
 }
@@ -67,6 +73,7 @@ void    Game::setTextures()
     background.setTexture(background_tex);
     background_extension.setTexture(background_tex);
     player.body.setTexture(player_tex);
+    paw.setTexture(paw_tex);
 }
 
 // Handles events
@@ -151,6 +158,12 @@ void    Game::renderGameplayFlying()
     // Draw obstacles
     for (const auto& obstacle : obstacles)
         window.draw(obstacle.obstacle_sprite);
+    // Draw score
+        window.draw(paw);
+        score_display.setFont(font);
+        score_display.setString(std::to_string(score));
+        window.draw(score_display);
+
 }
 
 // Renders the part of the gameplay that holds the puzzle
