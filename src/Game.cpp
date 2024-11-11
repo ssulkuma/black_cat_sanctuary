@@ -129,6 +129,14 @@ void    Game::renderGameplayFlying()
         {
             player.checkPlayerCollision(obstacle, score, game_state);
         }
+        // Check obstacle collision with star spell
+        for (auto& star : stars)
+        {
+            if (star.star_projectile.getGlobalBounds().intersects(obstacle.obstacle_sprite.getGlobalBounds()))
+            {
+                star.checkStarCollision(obstacle, star);
+            }
+        }
     }
     // Spawn different type of obstacles at random
     obstacle.spawnObstacle(*this);

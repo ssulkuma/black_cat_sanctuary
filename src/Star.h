@@ -12,6 +12,7 @@ class Star
 public:
     // Star data
     sf::Sprite  star_projectile;
+    bool        hit;
 
     // Constructor and destructor
     Star();
@@ -20,6 +21,7 @@ public:
     // Star functions
     void    initializeStars(sf::Vector2f playerPosition);
     void    updateStars(float deltatime, std::vector<Star>&   stars);
+    void    checkStarCollision(Obstacle& obstacle, Star& star);
 
 private:
 };
