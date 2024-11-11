@@ -23,10 +23,8 @@ int main(int argc, char* argv[])
     }
     // Set textures on sprites
     game.setTextures();
-
-    // Check that background music starts playing.
-   if (!game.audio.playMusic())
-       std::cerr << "Error // Failed to play background music." << std::endl;
+    // Play background music
+    game.audio.playMusic();
     // Run the program as long as the window is open.
     while (game.window.isOpen())
     {

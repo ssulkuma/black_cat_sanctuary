@@ -15,12 +15,15 @@ public:
     // Sound Effects
     sf::SoundBuffer soundBuffer;
 
+    // Music 
+    sf::Music   background_music;
+
     // Constructor and destructor
     Audio();
     ~Audio();
 
     // Background music functions
-    bool        playMusic();
+    void        playMusic();
     void        stopMusic();
 
     //Sound effect functions
@@ -28,6 +31,4 @@ public:
     void        playSound(const std::string& sound);
 
 private:
-    // Music 
-    sf::Music   background_music;
 };

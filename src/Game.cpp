@@ -51,6 +51,11 @@ bool    Game::initialize()
         std::cerr << "Error // Unable to load textures." << std::endl;
         return (false);
     }
+    if (!audio.background_music.openFromFile(ResourceManager::getFilePath("background_music.ogg")))
+    {
+        std::cerr << "Error // Unable to open audio file." << std::endl;
+        return (false);
+    }
     return (true);
 }
 

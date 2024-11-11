@@ -10,7 +10,8 @@
 // Constructor
 Audio::Audio()
 {
-
+    background_music.setLoop(true);
+    background_music.setVolume(50.f);
 }
 
 // Destructor
@@ -20,9 +21,9 @@ Audio::~Audio()
 }
 
 // Plays background music
-bool   Audio::playMusic()
+void   Audio::playMusic()
 {
-    return (true);
+    background_music.play();
 } 
 
 // Stops bakcground music
