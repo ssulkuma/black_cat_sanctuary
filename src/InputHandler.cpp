@@ -7,6 +7,45 @@
 
 #include "Game.h"
 
+//Constructor
+Input::Input()
+{
+
+}
+
+// Destructor
+Input::~Input()
+{
+
+}
+
+// Handles key press input
+void    Input::handleKeyPress(Game& game)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && game.player.body.getPosition().y > 0 && game.spawn_count < 20)
+    {
+        game.player.body.move(0.0f, -PLAYER_SPEED * game.deltatime.asSeconds());
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && game.player.body.getPosition().y < (WINDOW_HEIGHT - PLAYER_HEIGHT) && game.spawn_count < 20)
+    {
+        game.player.body.move(0.0f, PLAYER_SPEED * game.deltatime.asSeconds());
+    }
+    // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    // {
+    //     if (spellClock.getElapsedTime().asSeconds() >= SPELL_COOLDOWN)
+    //     {
+    //         Star    star;
+    //         star.initializeStars(game.player.body.getPosition());
+    //         star.star_projectile.setTexture(game.star_tex);
+    //         star.star_projectile.setScale(0.2f, 0.2f);
+    //         game.stars.push_back(star);
+    //         spellClock.restart();
+    //     }
+    // }
+    // for (auto& star : game.stars)
+    //     star.updateStars(game.deltatime.asSeconds(), game.stars);
+}
+
 
 
 // GameInput::GameInput(Game* pGame, Player* pPlayer) :

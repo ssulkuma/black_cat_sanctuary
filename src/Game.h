@@ -63,6 +63,7 @@ public:
     // Classes
     Player                  player;
     Audio                   audio;
+    Input                   input;
 
     // Vectors
     std::vector<Star>       stars;

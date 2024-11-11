@@ -10,7 +10,8 @@
 // Constructor
 Player::Player()
 {
-
+    body.setPosition(50.0f, WINDOW_HEIGHT / 2 - PLAYER_HEIGHT / 2);
+    body.setScale(0.25f, 0.25f);
 }
 
 // Destructor

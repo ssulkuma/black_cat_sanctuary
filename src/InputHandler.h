@@ -9,6 +9,24 @@
 
 #include "Game.h"
 
+class Game;
+
+class Input
+{
+public:
+    // Constructor and destructor
+    Input();
+    ~Input();
+
+    // Spell data
+    sf::Clock   spellClock;
+
+    // Input functions
+    void    handleKeyPress(Game& game);
+
+private:
+};
+
 // #include <SFML/Window/Keyboard.hpp>
 
 // class Player;

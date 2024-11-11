@@ -34,7 +34,8 @@ int main(int argc, char* argv[])
         // Check for new events in the window and handle them.
         while (game.window.pollEvent(event))
             game.handleEvents(event);
-        // game.handleInput();
+        // Handle Input
+        game.input.handleKeyPress(game);
         // Render the content to the window.
         game.render();
     }

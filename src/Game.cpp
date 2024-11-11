@@ -14,6 +14,7 @@ Game::Game()
     game_state = GAMESTATE_PLAY;
     background.setPosition(0.0f, 0.0f);
     background_extension.setPosition(WINDOW_WIDTH, 0.0f);
+    spawn_count = 0;
 }
 
 // Destructor
@@ -64,6 +65,7 @@ void    Game::setTextures()
 {
     background.setTexture(background_tex);
     background_extension.setTexture(background_tex);
+    player.body.setTexture(player_tex);
 }
 
 // Handles events
@@ -117,9 +119,11 @@ void    Game::renderMenu()
 void    Game::renderGameplayFlying()
 {
     updateScrollingBackground();
-    //Draw background on window
+    // Draw background on window
     window.draw(background);
     window.draw(background_extension);
+    // Draw player on window
+    window.draw(player.body);
 }
 
 // Renders the part of the gameplay that holds the puzzle
